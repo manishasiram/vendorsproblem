@@ -1,0 +1,33 @@
+
+<div *ngIf="!submitted" class="container">
+    <div class="row">
+      <!-- <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2"> -->
+        <form  #f="ngForm" >
+            <div class="form-group">
+                <label for="per">Enter percentage of each vendor:</label>{{total_vendors.num_vendors}}
+                  <div *ngFor="let arr of Arr(total_vendors.num_vendors);let i = index ">
+                    <input type="number" id=i class="form-control" [(ngModel)]="Arr[i]" name="vendorper" required >
+                  </div>
+              </div>
+              <button class="btn btn-primary" (click)="Submit(f)" [disabled]="!f.valid" type="button">Submit</button>
+        </form>
+        
+    </div>
+  
+  </div>
+  <div *ngIf="submitted" class="container">
+    <form>
+        <div class="form-group">
+            <h1>Tasks are divided</h1>
+            <h2>Total Tasks:{{total_vendors.tasks}}</h2>
+            <h2>Total Vendors:{{total_vendors.num_vendors}}</h2>
+            <div *ngFor="let task of Tasks; let i=index">
+              <h3>Vendor{{i+1}} got{{task}}</h3>
+              
+            </div>
+        </div>
+    </form>
+    
+    
+  </div>
+  

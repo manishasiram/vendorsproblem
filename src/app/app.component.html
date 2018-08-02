@@ -1,0 +1,33 @@
+<div *ngIf="!submitted" class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form  #f="ngForm" >
+          <div class="form-group">
+            <label for="tasks">Enter total number of tasks:</label>
+            <input type="number" 
+            id="tasks"
+            ngModel
+            class="form-control"
+            name="tasks" required>
+          </div>
+          <div class="form-group">
+              <label for="lname">Enter total number of vendors:</label>
+              <input type="number" 
+              id="num_vendors" 
+              ngModel
+              class="form-control"
+              name="num_vendors" required>
+          </div>
+          
+          
+          <button class="btn btn-primary" (click)="onSubmit(f)" [disabled]="!f.valid" type="button">Submit</button>
+          
+          <button class="btn btn-primary" (click)="onReset(f)" type="submit">Reset</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+<div *ngIf="submitted">
+  <app-vendors></app-vendors>
+  </div>
